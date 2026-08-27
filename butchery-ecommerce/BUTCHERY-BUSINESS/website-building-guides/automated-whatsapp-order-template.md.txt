@@ -1,0 +1,19 @@
+Hello [Butchery Name] 🥩🔥
+
+I’d like to place an order:
+
+[Customer Name]: {{customer_name}}  
+[Phone Number]: {{customer_phone}}  
+[Delivery / Pickup]: {{delivery_or_pickup}}  
+[Preferred Date & Time]: {{preferred_datetime}}  
+
+🛒 My Order:  
+{{#each cart_items}}
+- {{item_name}} ({{quantity}} x R{{price_per_unit}}) = R{{item_total}}
+{{/each}}
+
+💰 Total: R{{order_total}}
+
+Notes: {{customer_notes}}
+
+Please confirm my order. Thank you! 🙌

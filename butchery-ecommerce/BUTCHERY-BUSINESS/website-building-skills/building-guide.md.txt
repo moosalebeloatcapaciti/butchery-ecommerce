@@ -1,0 +1,65 @@
+Got it — you want a modern, Gen Z‑friendly butchery e‑commerce that’s fast, proud, and culturally rich, hosted on Vercel.
+Here’s the refined skills set tailored to that vision:
+
+1. Modern Front‑End Development
+
+Next.js (perfect for Vercel hosting, fast SSR/ISR for speed)
+
+
+Tailwind CSS or Chakra UI for sleek, Gen Z‑style design
+
+
+Framer Motion for smooth, playful animations
+
+
+Responsive & Mobile‑First Design for convenience on any device
+
+2. Back‑End & API Skills
+
+Next.js API routes for serverless functions on Vercel
+
+
+Integration with WhatsApp Business API for automated cart‑to‑message flow
+
+
+Webhooks for real‑time order processing
+
+
+JSON data structuring for WhatsApp order summaries
+
+3. E‑Commerce Essentials
+
+Headless commerce setup (e.g., Medusa.js, Commerce.js, or Shopify Storefront API)
+
+
+Cart & checkout logic with per‑kg pricing for beef and other meats
+
+
+Booking/scheduling system for pickups or deliveries
+
+
+Payment gateway integration (PayFast, Yoco, Stripe)
+
+4. Branding & Cultural Storytelling
+
+Visual design skills to blend beef, spice, and local culture into the UI
+
+
+Copywriting for bold, proud, and relatable Gen Z messaging
+
+
+High‑quality photography & video integration for meat cuts and preparation styles
+
+5. Performance & Optimization
+
+Image optimization (Next.js Image component)
+
+
+Lighthouse performance tuning for speed
+
+
+SEO optimization for local and cultural keywords
+
+
+Analytics setup (Vercel Analytics, Google Analytics 4)
+

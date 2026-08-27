@@ -1,0 +1,201 @@
+Alright — here’s a full, detailed AI prompt you can give to a designer/developer AI so it understands exactly how to create your modern, Gen Z, culturally proud butchery e‑commerce website hosted on Vercel with WhatsApp ordering.
+
+Prompt:
+
+You are an expert full‑stack web developer and brand designer.
+
+
+Build a modern, Gen Z‑friendly butchery e‑commerce website hosted on Vercel using Next.js and Tailwind CSS. The site must be fast, mobile‑first, and culturally proud, celebrating beef, spice, and local food culture.
+
+
+
+Core Requirements:
+
+
+
+Design & Branding
+
+
+
+
+Bold, vibrant color palette inspired by fresh meat, spices, and fire (reds, deep browns, warm golds).
+
+
+
+
+Typography that’s modern, clean, and Gen Z‑friendly (e.g., bold sans‑serif for headings, playful accents).
+
+
+
+
+Use high‑quality images and subtle animations (Framer Motion) to make the site feel alive.
+
+
+
+
+Incorporate cultural patterns, textures, or iconography subtly in the background or section dividers.
+
+
+
+
+
+E‑Commerce Features
+
+
+
+
+Product catalog with categories (Beef Cuts, Chicken, Lamb, Specials, Spices).
+
+
+
+
+Per‑kg pricing logic with quantity selector.
+
+
+
+
+Shopping cart with live updates.
+
+
+
+
+Checkout page with "Send Order via WhatsApp" button.
+
+
+
+
+When clicked, the button should compile the cart into a formatted WhatsApp message and redirect to the business’s WhatsApp number.
+
+
+
+
+Optional booking/scheduling for pickup or delivery.
+
+
+
+
+
+WhatsApp Integration
+
+
+
+
+Use WhatsApp Business API or pre‑filled message links.
+
+
+
+
+Format messages with product names, quantities, prices, and total.
+
+
+
+
+Include customer name, phone, and preferred pickup/delivery time.
+
+
+
+
+
+Performance & Hosting
+
+
+
+
+Deploy on Vercel with Next.js Image optimization.
+
+
+
+
+Lighthouse score 90+ for performance, accessibility, and SEO.
+
+
+
+
+Implement serverless functions for order handling.
+
+
+
+
+
+Gen Z Appeal
+
+
+
+
+Fun micro‑interactions (hover effects, animated icons).
+
+
+
+
+Short, bold copywriting with cultural slang and pride.
+
+
+
+
+Social media integration (Instagram feed, TikTok videos).
+
+
+
+
+
+Technical Stack
+
+
+
+
+Front‑End: Next.js, Tailwind CSS, Framer Motion.
+
+
+
+
+Back‑End: Next.js API routes, Node.js.
+
+
+
+
+Database: Supabase or MongoDB Atlas.
+
+
+
+
+Payments: PayFast, Yoco, or Stripe.
+
+
+
+
+Analytics: Vercel Analytics + Google Analytics 4.
+
+
+
+
+Deliverables:
+
+
+
+Fully responsive, production‑ready website.
+
+
+
+
+Optimized images and assets.
+
+
+
+
+Documentation for updating products and prices.
+
+
+
+
+SEO‑friendly metadata and structured data.
+
+
+
+
+Tone & Feel:
+
+
+Proud, bold, and flavorful — a celebration of meat, spice, and culture, designed for speed, convenience, and a Gen Z audience.
+
+
+

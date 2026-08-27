@@ -1,0 +1,47 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-display: "Archivo Black", "Arial Black", sans-serif;
+  --font-body: "Inter", system-ui, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #1c1210;
+  color: #f5efe6;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+.brand-heading {
+  font-family: var(--font-display);
+  letter-spacing: -0.02em;
+}
+
+.section-pad {
+  @apply px-5 sm:px-8 lg:px-12;
+}
+
+.btn-ember {
+  @apply inline-flex items-center justify-center gap-2 rounded-full bg-ember px-6 py-3 font-semibold text-smoke transition-colors hover:bg-ember-light focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold;
+}
+
+.btn-outline {
+  @apply inline-flex items-center justify-center gap-2 rounded-full border border-gold/60 px-6 py-3 font-semibold text-gold transition-colors hover:bg-gold hover:text-char focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold;
+}
+
+.card-panel {
+  @apply rounded-2xl border border-white/5 bg-char-light shadow-[0_10px_30px_-15px_rgba(0,0,0,0.6)];
+}
