@@ -31,7 +31,7 @@ export const PRODUCTS: Product[] = [
       "Hand-shaped raw beef patties, seasoned and ready for the fire. Made fresh in-store daily.",
     price: 155,
     unit: "kg",
-    image: "/images/beef-products/beef-burger-patties.jpg",
+    image: "/images/beef-products/fresh Beef Burgers (raw patties).jpg",
     featured: true,
   },
   {
@@ -43,7 +43,7 @@ export const PRODUCTS: Product[] = [
     description: "Everyday beef mince, ground fresh — perfect for bolognese, chakalaka mince and mogodu.",
     price: 155,
     unit: "kg",
-    image: "/images/beef-products/beef-burger-patties.jpg",
+    image: "/images/beef-products/fresh Beef Burgers (raw patties).jpg",
   },
   {
     id: "beef-mince-lean",
@@ -54,7 +54,7 @@ export const PRODUCTS: Product[] = [
     description: "Lean cut beef mince with less fat, trimmed to order.",
     price: 195,
     unit: "kg",
-    image: "/images/beef-products/beef-burger-patties.jpg",
+    image: "/images/beef-products/fresh Beef Burgers (raw patties).jpg",
   },
   {
     id: "rump-steak",
@@ -65,7 +65,7 @@ export const PRODUCTS: Product[] = [
     description: "Braai-ready rump, cut thick for the fire. A weekend staple.",
     price: 285,
     unit: "kg",
-    image: "/images/beef-products/beef-burger-patties.jpg",
+    image: "/images/beef-products/fresh Beef Burgers (raw patties).jpg",
     featured: true,
   },
   {
@@ -77,7 +77,7 @@ export const PRODUCTS: Product[] = [
     description: "Tender sirloin, trimmed and cut to your preferred thickness.",
     price: 325,
     unit: "kg",
-    image: "/images/beef-products/beef-burger-patties.jpg",
+    image: "/images/beef-products/fresh Beef Burgers (raw patties).jpg",
   },
   {
     id: "t-bone-steak",
@@ -88,7 +88,7 @@ export const PRODUCTS: Product[] = [
     description: "The classic. Strip and fillet either side of the bone, full flavour.",
     price: 305,
     unit: "kg",
-    image: "/images/beef-products/beef-burger-patties.jpg",
+    image: "/images/beef-products/fresh Beef Burgers (raw patties).jpg",
   },
   {
     id: "oxtail",
@@ -99,7 +99,7 @@ export const PRODUCTS: Product[] = [
     description: "Slow-cook oxtail, chopped and ready for a proper Sunday potjie.",
     price: 245,
     unit: "kg",
-    image: "/images/beef-products/beef-burger-patties.jpg",
+    image: "/images/beef-products/fresh Beef Burgers (raw patties).jpg",
   },
 
   // Pork
@@ -112,7 +112,7 @@ export const PRODUCTS: Product[] = [
     description: "Thick-cut pork chops, marbled and marinade-ready for the grid.",
     price: 120,
     unit: "kg",
-    image: "/images/pork-products/pork-braai-chops.jpg",
+    image: "/images/pork-products/fresh Pork Braai Chops.jpg",
     featured: true,
   },
   {
@@ -124,7 +124,7 @@ export const PRODUCTS: Product[] = [
     description: "Cubed pork stew meat, cut fresh for a hearty pot.",
     price: 100,
     unit: "kg",
-    image: "/images/pork-products/pork-stew-meat.jpg",
+    image: "/images/pork-products/fresh Pork Stew meat (cubed).jpg",
   },
   {
     id: "pork-packs-assorted",
@@ -135,7 +135,7 @@ export const PRODUCTS: Product[] = [
     description: "A mixed pack of assorted pork cuts — great value for the freezer.",
     price: 115,
     unit: "kg",
-    image: "/images/pork-products/pork-packs-assorted.jpg",
+    image: "/images/pork-products/fresh Pork Packs (assorted cuts).jpg",
   },
   {
     id: "pork-trotters",
@@ -146,7 +146,7 @@ export const PRODUCTS: Product[] = [
     description: "Cleaned pork trotters, ready for a slow-cooked classic.",
     price: 55,
     unit: "kg",
-    image: "/images/pork-products/pork-trotters.jpg",
+    image: "/images/pork-products/fresh Pork Trotters.jpg",
   },
   {
     id: "pork-back-bones",
@@ -157,7 +157,7 @@ export const PRODUCTS: Product[] = [
     description: "Meaty pork back bones for soups, stews and slow braises.",
     price: 65,
     unit: "kg",
-    image: "/images/pork-products/pork-back-bones.jpg",
+    image: "/images/pork-products/fresh Pork Back Bones.jpg",
   },
   {
     id: "pork-smoked-bones",
@@ -168,7 +168,7 @@ export const PRODUCTS: Product[] = [
     description: "In-house smoked pork bones — deep smoky flavour for beans and greens.",
     price: 70,
     unit: "kg",
-    image: "/images/pork-products/pork-smoked-bones.jpg",
+    image: "/images/pork-products/fresh Pork Smoked Bones.jpg",
   },
 
   // Processed / other
@@ -193,7 +193,7 @@ export const PRODUCTS: Product[] = [
     description: "Coiled boerewors made fresh in-house with our own spice blend.",
     price: 105,
     unit: "kg",
-    image: "/images/other-processed-products/boerewors-coiled.jpg",
+    image: "/images/other-processed-products/fresh Boerewors (coiled).jpg",
     featured: true,
   },
   {
@@ -205,7 +205,7 @@ export const PRODUCTS: Product[] = [
     description: "Our boerewors with a fiery chakalaka twist, coiled fresh.",
     price: 115,
     unit: "kg",
-    image: "/images/other-processed-products/chakalaka-wors.jpg",
+    image: "/images/other-processed-products/fresh Chakalaka Wors (coiled).jpg",
   },
   {
     id: "chakalaka-burgers",
@@ -216,7 +216,7 @@ export const PRODUCTS: Product[] = [
     description: "Raw beef patties packed with chakalaka spice for a bold, proud flavour.",
     price: 165,
     unit: "kg",
-    image: "/images/other-processed-products/chakalaka-burgers.jpg",
+    image: "/images/other-processed-products/fresh Chakalaka Burgers (raw).jpg",
   },
   {
     id: "chakalaka-mince",
@@ -227,7 +227,7 @@ export const PRODUCTS: Product[] = [
     description: "Pre-spiced chakalaka mince, ready to hit the pan.",
     price: 160,
     unit: "kg",
-    image: "/images/other-processed-products/chakalaka-mince.jpg",
+    image: "/images/other-processed-products/fresh Chakalaka Mince.jpg",
   },
   {
     id: "french-polony",
@@ -238,7 +238,7 @@ export const PRODUCTS: Product[] = [
     description: "Sliced or whole French polony, a lunchbox and braai side favourite.",
     price: 70,
     unit: "kg",
-    image: "/images/other-processed-products/french-polony.jpg",
+    image: "/images/other-processed-products/fresh French Polony (sliced and whole).jpg",
   },
   {
     id: "penny-polony",
@@ -249,7 +249,7 @@ export const PRODUCTS: Product[] = [
     description: "The classic penny polony, whole or sliced to order.",
     price: 55,
     unit: "kg",
-    image: "/images/other-processed-products/penny-polony.jpg",
+    image: "/images/other-processed-products/fresh Penny Polony (whole and sliced).jpg",
   },
   {
     id: "red-viennas",
@@ -260,7 +260,7 @@ export const PRODUCTS: Product[] = [
     description: "Classic red viennas — braai, boil or pan-fry.",
     price: 75,
     unit: "kg",
-    image: "/images/other-processed-products/red-viennas.jpg",
+    image: "/images/other-processed-products/fresh Red Viennas.jpg",
   },
   {
     id: "sandwich-ham",
@@ -271,7 +271,7 @@ export const PRODUCTS: Product[] = [
     description: "Sliced sandwich ham, cut fresh at the counter.",
     price: 150,
     unit: "kg",
-    image: "/images/other-processed-products/sandwich-ham.jpg",
+    image: "/images/other-processed-products/fresh Sandwich Ham (sliced).jpg",
   },
 
   // Spices
@@ -284,7 +284,7 @@ export const PRODUCTS: Product[] = [
     description: "Our signature steak & chops spice blend — the same one we use on our own braai.",
     price: 32,
     unit: "100g",
-    image: "/images/spice-products/house-braai-spice.jpg",
+    image: "/images/spice-products/demo.jpg",
     featured: true,
   },
   {
@@ -296,7 +296,7 @@ export const PRODUCTS: Product[] = [
     description: "All five of our house spice blends in one pack — steak, chops, wors, chakalaka and peri-peri.",
     price: 150,
     unit: "pack",
-    image: "/images/spice-products/five-spices-shot.jpg",
+    image: "/images/spice-products/5-spices-in-a-single-shoot.jpg",
   },
   {
     id: "peri-peri-marinade",
@@ -307,7 +307,7 @@ export const PRODUCTS: Product[] = [
     description: "Bottled peri-peri marinade, ready to pour and braai.",
     price: 75,
     unit: "250ml",
-    image: "/images/spice-products/five-spices-shot.jpg",
+    image: "/images/spice-products/5-spices-in-a-single-shoot.jpg",
   },
   {
     id: "bbq-marinade",
@@ -318,7 +318,7 @@ export const PRODUCTS: Product[] = [
     description: "Smoky-sweet BBQ marinade, bottled and braai-ready.",
     price: 75,
     unit: "250ml",
-    image: "/images/spice-products/five-spices-shot.jpg",
+    image: "/images/spice-products/5-spices-in-a-single-shoot.jpg",
   },
 
   // Combos (from the price-suggestions "Gen Z appeal" tip)
