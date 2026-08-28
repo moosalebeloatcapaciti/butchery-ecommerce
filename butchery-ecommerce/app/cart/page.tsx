@@ -7,6 +7,9 @@ import { Minus, Plus, Trash2 } from "lucide-react";
 import { useCartStore } from "@/lib/cartStore";
 import { formatZAR } from "@/lib/business";
 
+const DELIVERY_FEE = 60;
+const FREE_DELIVERY_THRESHOLD = 1000;
+
 export default function CartPage() {
   const [mounted, setMounted] = useState(false);
   const items = useCartStore((s) => s.items);
@@ -90,6 +93,11 @@ export default function CartPage() {
         <div>
           <p className="text-sm text-smoke/60">Order total</p>
           <p className="brand-heading text-2xl text-gold">{formatZAR(totalPrice)}</p>
+          <p className="mt-2 text-xs text-smoke/50">
+            {totalPrice < FREE_DELIVERY_THRESHOLD 
+              ? `Delivery fee (R${DELIVERY_FEE}) will be added if you choose delivery at checkout`
+              : "Free delivery available"}
+          </p>
         </div>
         <Link href="/checkout" className="btn-ember">
           Proceed to checkout

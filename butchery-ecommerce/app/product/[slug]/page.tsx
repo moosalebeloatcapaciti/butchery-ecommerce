@@ -23,13 +23,13 @@ export default function ProductDetailPage({
       </Link>
 
       <div className="mt-6 grid gap-8 md:grid-cols-2">
-        <div className="relative aspect-square overflow-hidden rounded-3xl border border-white/10">
+        <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-black/20">
           <Image
             src={product.image}
             alt={product.name}
-            fill
-            sizes="(max-width: 768px) 100vw, 50vw"
-            className="object-cover"
+            width={600}
+            height={600}
+            className="w-full h-auto object-contain p-4"
             priority
           />
         </div>

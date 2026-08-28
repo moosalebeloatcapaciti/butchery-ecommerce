@@ -27,13 +27,13 @@ export default function HomePage() {
               Start your order
             </Link>
           </div>
-          <div className="relative aspect-video overflow-hidden rounded-2xl">
+          <div className="relative overflow-hidden rounded-2xl bg-black/20">
             <Image
               src="/images/business-past-menus/past-specials-promos3.jpg"
               alt="Past specials and promotions"
-              fill
-              sizes="(max-width: 768px) 100vw, 50vw"
-              className="object-cover"
+              width={500}
+              height={400}
+              className="w-full h-auto object-contain p-4"
             />
           </div>
         </div>

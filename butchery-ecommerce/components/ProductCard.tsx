@@ -12,13 +12,13 @@ export default function ProductCard({ product }: { product: Product }) {
 
   return (
     <div className="card-panel group flex flex-col overflow-hidden">
-      <Link href={`/product/${product.slug}`} className="relative block aspect-square overflow-hidden">
+      <Link href={`/product/${product.slug}`} className="relative block aspect-square overflow-hidden bg-black/5">
         <Image
           src={product.image}
           alt={product.name}
           fill
           sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
-          className="object-cover transition-transform duration-300 group-hover:scale-105"
+          className="object-contain p-3 transition-transform duration-300 group-hover:scale-105"
         />
         <span className="absolute left-2 top-2 rounded-full bg-char/80 px-2 py-1 text-[10px] font-semibold uppercase tracking-wide text-gold">
           {product.categoryLabel}

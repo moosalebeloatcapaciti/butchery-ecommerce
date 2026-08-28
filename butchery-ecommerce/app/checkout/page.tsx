@@ -6,6 +6,9 @@ import { useCartStore } from "@/lib/cartStore";
 import { formatZAR } from "@/lib/business";
 import { buildWhatsAppMessage, buildWhatsAppLink } from "@/lib/whatsapp";
 
+const DELIVERY_FEE = 60;
+const FREE_DELIVERY_THRESHOLD = 1000;
+
 export default function CheckoutPage() {
   const [mounted, setMounted] = useState(false);
   const items = useCartStore((s) => s.items);
@@ -19,6 +22,10 @@ export default function CheckoutPage() {
     preferredDatetime: "",
     notes: "",
   });
+
+  const deliveryFee = form.deliveryOrPickup === "Delivery" && totalPrice < FREE_DELIVERY_THRESHOLD ? DELIVERY_FEE : 0;
+  const finalTotal = totalPrice + deliveryFee;
+  
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState("");
 
@@ -158,9 +165,26 @@ export default function CheckoutPage() {
               </div>
             ))}
           </div>
+          <div className="mt-4 flex flex-col gap-2 border-t border-white/10 pt-4 text-sm">
+            <div className="flex justify-between text-smoke/80">
+              <span>Subtotal</span>
+              <span>{formatZAR(totalPrice)}</span>
+            </div>
+            {form.deliveryOrPickup === "Delivery" && (
+              <div className="flex justify-between text-smoke/80">
+                <span className="flex items-center gap-1">
+                  Delivery fee
+                  {totalPrice >= FREE_DELIVERY_THRESHOLD && (
+                    <span className="text-xs text-gold">(FREE)</span>
+                  )}
+                </span>
+                <span>{formatZAR(deliveryFee)}</span>
+              </div>
+            )}
+          </div>
           <div className="mt-4 flex justify-between border-t border-white/10 pt-4 font-bold text-gold">
             <span>Total</span>
-            <span>{formatZAR(totalPrice)}</span>
+            <span>{formatZAR(finalTotal)}</span>
           </div>
         </div>
       </div>

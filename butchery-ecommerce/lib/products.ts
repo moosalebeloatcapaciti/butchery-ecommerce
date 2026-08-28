@@ -43,7 +43,7 @@ export const PRODUCTS: Product[] = [
     description: "Everyday beef mince, ground fresh — perfect for bolognese, chakalaka mince and mogodu.",
     price: 155,
     unit: "kg",
-    image: "/images/beef-products/fresh Beef Burgers (raw patties).jpg",
+    image: "/images/beef-products/regular-means.png",
   },
   {
     id: "beef-mince-lean",
@@ -54,7 +54,7 @@ export const PRODUCTS: Product[] = [
     description: "Lean cut beef mince with less fat, trimmed to order.",
     price: 195,
     unit: "kg",
-    image: "/images/beef-products/fresh Beef Burgers (raw patties).jpg",
+    image: "/images/beef-products/lean-mince.png",
   },
   {
     id: "rump-steak",
@@ -65,7 +65,7 @@ export const PRODUCTS: Product[] = [
     description: "Braai-ready rump, cut thick for the fire. A weekend staple.",
     price: 285,
     unit: "kg",
-    image: "/images/beef-products/fresh Beef Burgers (raw patties).jpg",
+    image: "/images/beef-products/rump-steak.png",
     featured: true,
   },
   {
@@ -77,7 +77,7 @@ export const PRODUCTS: Product[] = [
     description: "Tender sirloin, trimmed and cut to your preferred thickness.",
     price: 325,
     unit: "kg",
-    image: "/images/beef-products/fresh Beef Burgers (raw patties).jpg",
+    image: "/images/beef-products/sirloin-steak.png",
   },
   {
     id: "t-bone-steak",
@@ -88,7 +88,7 @@ export const PRODUCTS: Product[] = [
     description: "The classic. Strip and fillet either side of the bone, full flavour.",
     price: 305,
     unit: "kg",
-    image: "/images/beef-products/fresh Beef Burgers (raw patties).jpg",
+    image: "/images/beef-products/t-bone-steak.png",
   },
   {
     id: "oxtail",
@@ -99,7 +99,7 @@ export const PRODUCTS: Product[] = [
     description: "Slow-cook oxtail, chopped and ready for a proper Sunday potjie.",
     price: 245,
     unit: "kg",
-    image: "/images/beef-products/fresh Beef Burgers (raw patties).jpg",
+    image: "/images/beef-products/oxtail.jpg",
   },
 
   // Pork
@@ -284,7 +284,7 @@ export const PRODUCTS: Product[] = [
     description: "Our signature steak & chops spice blend — the same one we use on our own braai.",
     price: 32,
     unit: "100g",
-    image: "/images/spice-products/demo.jpg",
+    image: "/images/spice-products/HOUSE-BRAAI-BLEND.png",
     featured: true,
   },
   {
@@ -307,7 +307,7 @@ export const PRODUCTS: Product[] = [
     description: "Bottled peri-peri marinade, ready to pour and braai.",
     price: 75,
     unit: "250ml",
-    image: "/images/spice-products/5-spices-in-a-single-shoot.jpg",
+    image: "/images/spice-products/BBQ-MARINADE.png",
   },
   {
     id: "bbq-marinade",
@@ -318,7 +318,7 @@ export const PRODUCTS: Product[] = [
     description: "Smoky-sweet BBQ marinade, bottled and braai-ready.",
     price: 75,
     unit: "250ml",
-    image: "/images/spice-products/5-spices-in-a-single-shoot.jpg",
+    image: "/images/spice-products/BBQ-MARINADE.png",
   },
 
   // Combos (from the price-suggestions "Gen Z appeal" tip)

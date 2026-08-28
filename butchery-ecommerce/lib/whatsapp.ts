@@ -9,6 +9,9 @@ export type OrderDetails = {
   notes?: string;
 };
 
+const DELIVERY_FEE = 60;
+const FREE_DELIVERY_THRESHOLD = 1000;
+
 // Mirrors the structure of automated-whatsapp-order-template.md.txt
 export function buildWhatsAppMessage(
   items: CartItem[],
@@ -34,7 +37,20 @@ export function buildWhatsAppMessage(
     );
   }
   lines.push("");
-  lines.push(`💰 Total: ${formatZAR(total)}`);
+  lines.push(`Subtotal: ${formatZAR(total)}`);
+  
+  const deliveryFee = order.deliveryOrPickup === "Delivery" && total < FREE_DELIVERY_THRESHOLD ? DELIVERY_FEE : 0;
+  if (order.deliveryOrPickup === "Delivery") {
+    if (deliveryFee > 0) {
+      lines.push(`Delivery fee: ${formatZAR(deliveryFee)}`);
+      lines.push(`💰 Total: ${formatZAR(total + deliveryFee)}`);
+    } else {
+      lines.push(`Delivery fee: FREE (Order above R${FREE_DELIVERY_THRESHOLD})`);
+      lines.push(`💰 Total: ${formatZAR(total)}`);
+    }
+  } else {
+    lines.push(`💰 Total: ${formatZAR(total)}`);
+  }
   lines.push("");
   lines.push(`Notes: ${order.notes || "-"}`);
   lines.push("");
