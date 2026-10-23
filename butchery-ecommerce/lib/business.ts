@@ -1,5 +1,5 @@
 export const BUSINESS = {
-  name: "The Butchery",
+  name: "Rowena Butchery",
   tagline: "Proud. Bold. Fresh off the fire.",
   address: "2 Overdale Road W, Ravensmead, Cape Town, 7493",
   whatsappNumbers: ["0733137963", "0843861098"],
