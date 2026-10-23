@@ -27,8 +27,7 @@ export default function Hero() {
           </h1>
           <p className="mt-5 max-w-md text-smoke/70">
             {BUSINESS.tagline} Order your beef, pork, boerewors and biltong
-            online, then confirm it straight through WhatsApp — no app,
-            no fuss.
+            online, then confirm it straight through WhatsApp.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
             <Link href="/products" className="btn-ember">
