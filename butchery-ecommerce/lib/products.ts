@@ -296,7 +296,7 @@ export const PRODUCTS: Product[] = [
     description: "All five of our house spice blends in one pack — steak, chops, wors, chakalaka and peri-peri.",
     price: 150,
     unit: "pack",
-    image: "/images/spice-products/5-spices-in-a-single-shoot.jpg",
+    image: "/images/spice-products/5-spices-in-a-single-shoot.png",
   },
   {
     id: "peri-peri-marinade",
@@ -307,7 +307,7 @@ export const PRODUCTS: Product[] = [
     description: "Bottled peri-peri marinade, ready to pour and braai.",
     price: 75,
     unit: "250ml",
-    image: "/images/spice-products/BBQ-MARINADE.png",
+    image: "/images/spice-products/PERI-PERI-MARINADE.png",
   },
   {
     id: "bbq-marinade",
