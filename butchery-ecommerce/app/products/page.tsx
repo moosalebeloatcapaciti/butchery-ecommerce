@@ -22,16 +22,16 @@ function ProductsContent() {
 
   return (
     <div className="section-pad py-10">
-      <h1 className="brand-heading text-3xl text-smoke sm:text-4xl">The Menu</h1>
+      <h1 className="brand-heading text-3xl text-smoke sm:text-4xl">Products</h1>
       <p className="mt-2 text-sm text-smoke/60">
-        Priced per {`{unit}`} unless noted. Add items to your cart, then
+        Browse our fresh products by category. Add items to your cart, then
         confirm your order on WhatsApp.
       </p>
 
       <div className="sticky top-16 z-30 -mx-5 mt-6 flex flex-col gap-3 bg-char/95 px-5 py-3 backdrop-blur sm:mx-0 sm:flex-row sm:items-center sm:justify-between sm:rounded-2xl sm:border sm:border-white/5">
         <input
           type="search"
-          placeholder="Search the menu…"
+          placeholder="Search products…"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           className="w-full rounded-full border border-white/10 bg-char-light px-4 py-2 text-sm text-smoke placeholder:text-smoke/40 focus:border-gold focus:outline-none sm:w-64"
@@ -65,7 +65,7 @@ function ProductsContent() {
 
       {filtered.length === 0 ? (
         <p className="mt-16 text-center text-smoke/60">
-          Nothing matches that search. Try another cut or clear your filters.
+          Nothing matches that search. Try another product or clear your filters.
         </p>
       ) : (
         <div className="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
@@ -82,7 +82,7 @@ function ProductsContent() {
 
 export default function ProductsPage() {
   return (
-    <Suspense fallback={<div className="section-pad py-10">Loading menu…</div>}>
+    <Suspense fallback={<div className="section-pad py-10">Loading products…</div>}>
       <ProductsContent />
     </Suspense>
   );

@@ -19,9 +19,8 @@ export default function HomePage() {
               Order in two minutes flat
             </h2>
             <p className="mt-3 max-w-md text-sm text-smoke/70">
-              Build your basket, choose pickup or delivery, and send it
-              straight to our WhatsApp — we'll confirm your order and have
-              it ready.
+              Choose products, services, airtime or vouchers, then send your
+              basket to us on WhatsApp. We’ll confirm the details with you.
             </p>
             <Link href="/products" className="btn-ember mt-6">
               Start your order

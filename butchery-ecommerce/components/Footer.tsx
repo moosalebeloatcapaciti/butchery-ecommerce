@@ -9,8 +9,11 @@ export default function Footer() {
         <div>
           <h3 className="brand-heading text-xl text-gold">{BUSINESS.name}</h3>
           <p className="mt-2 max-w-xs text-sm text-smoke/70">{BUSINESS.tagline}</p>
-          <div className="mt-4 flex gap-2 text-xs uppercase tracking-wide text-ash">
-            <span>Beef</span>·<span>Pork</span>·<span>Boerewors</span>·<span>Biltong</span>
+          <div className="mt-4 flex flex-wrap gap-x-3 gap-y-2 text-xs font-semibold uppercase tracking-wide text-ash">
+            <Link href="/products" className="hover:text-gold">Products</Link>
+            <Link href="/services" className="hover:text-gold">Services</Link>
+            <Link href="/airtime" className="hover:text-gold">Airtime</Link>
+            <Link href="/voucher" className="hover:text-gold">Voucher</Link>
           </div>
         </div>
 
@@ -53,11 +56,7 @@ export default function Footer() {
 
       <div className="section-pad flex flex-col gap-2 border-t border-white/5 py-5 text-xs text-ash sm:flex-row sm:items-center sm:justify-between">
         <p>© {new Date().getFullYear()} {BUSINESS.name}. All rights reserved.</p>
-        <p>
-          <Link href="/about" className="hover:text-gold">
-            About the business
-          </Link>
-        </p>
+        <Link href="/about" className="hover:text-gold">About the business</Link>
       </div>
     </footer>
   );

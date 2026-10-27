@@ -26,12 +26,12 @@ export default function Hero() {
             No shortcuts.
           </h1>
           <p className="mt-5 max-w-md text-smoke/70">
-            {BUSINESS.tagline} Order your beef, pork, boerewors and biltong
-            online, then confirm it straight through WhatsApp.
+            {BUSINESS.tagline} Shop products, pay for services, top up airtime
+            or choose a voucher — then confirm your order through WhatsApp.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
             <Link href="/products" className="btn-ember">
-              Shop the menu
+              Shop products
             </Link>
             <Link href="/products?category=combo" className="btn-outline">
               See combo deals

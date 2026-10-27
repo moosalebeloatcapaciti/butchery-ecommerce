@@ -2,7 +2,7 @@
 
 import { useState, useEffect, type FormEvent } from "react";
 import Link from "next/link";
-import { useCartStore } from "@/lib/cartStore";
+import { isPhysicalProduct, useCartStore } from "@/lib/cartStore";
 import { formatZAR } from "@/lib/business";
 import { buildWhatsAppMessage, buildWhatsAppLink } from "@/lib/whatsapp";
 
@@ -14,6 +14,12 @@ export default function CheckoutPage() {
   const items = useCartStore((s) => s.items);
   const totalPrice = useCartStore((s) => s.totalPrice());
   const clearCart = useCartStore((s) => s.clearCart);
+  const physicalSubtotal = items.reduce(
+    (sum, item) =>
+      isPhysicalProduct(item) ? sum + item.price * item.quantity : sum,
+    0
+  );
+  const hasPhysicalProducts = items.some(isPhysicalProduct);
 
   const [form, setForm] = useState({
     customerName: "",
@@ -23,7 +29,12 @@ export default function CheckoutPage() {
     notes: "",
   });
 
-  const deliveryFee = form.deliveryOrPickup === "Delivery" && totalPrice < FREE_DELIVERY_THRESHOLD ? DELIVERY_FEE : 0;
+  const deliveryFee =
+    hasPhysicalProducts &&
+    form.deliveryOrPickup === "Delivery" &&
+    physicalSubtotal < FREE_DELIVERY_THRESHOLD
+      ? DELIVERY_FEE
+      : 0;
   const finalTotal = totalPrice + deliveryFee;
   
   const [submitting, setSubmitting] = useState(false);
@@ -35,8 +46,8 @@ export default function CheckoutPage() {
     return (
       <div className="section-pad flex flex-col items-center gap-4 py-24 text-center">
         <h1 className="brand-heading text-2xl text-smoke">Nothing to check out yet</h1>
-        <Link href="/products" className="btn-ember">
-          Browse the menu
+        <Link href="/" className="btn-ember">
+          Browse the storefront
         </Link>
       </div>
     );
@@ -46,8 +57,16 @@ export default function CheckoutPage() {
     e.preventDefault();
     setError("");
 
-    if (!form.customerName || !form.customerPhone || !form.preferredDatetime) {
-      setError("Please fill in your name, phone number and preferred time.");
+    if (
+      !form.customerName.trim() ||
+      !form.customerPhone.trim() ||
+      (hasPhysicalProducts && !form.preferredDatetime)
+    ) {
+      setError(
+        hasPhysicalProducts
+          ? "Please fill in your name, phone number and preferred time."
+          : "Please fill in your name and phone number."
+      );
       return;
     }
 
@@ -58,10 +77,22 @@ export default function CheckoutPage() {
       await fetch("/api/orders", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ items, total: totalPrice, ...form }),
+        body: JSON.stringify({
+          items,
+          total: totalPrice,
+          ...form,
+          deliveryOrPickup: hasPhysicalProducts
+            ? form.deliveryOrPickup
+            : "Not applicable",
+          preferredDatetime: hasPhysicalProducts ? form.preferredDatetime : "",
+        }),
       }).catch(() => null);
 
-      const message = buildWhatsAppMessage(items, form);
+      const message = buildWhatsAppMessage(items, {
+        ...form,
+        deliveryOrPickup: hasPhysicalProducts ? form.deliveryOrPickup : undefined,
+        preferredDatetime: hasPhysicalProducts ? form.preferredDatetime : undefined,
+      });
       const link = buildWhatsAppLink(message);
       clearCart();
       window.location.href = link;
@@ -84,6 +115,7 @@ export default function CheckoutPage() {
               Full name
             </label>
             <input
+              required
               value={form.customerName}
               onChange={(e) => setForm({ ...form, customerName: e.target.value })}
               className="mt-1 w-full rounded-lg border border-white/10 bg-char-light px-4 py-2.5 text-smoke focus:border-gold focus:outline-none"
@@ -95,44 +127,50 @@ export default function CheckoutPage() {
               Phone number
             </label>
             <input
+              required
               value={form.customerPhone}
               onChange={(e) => setForm({ ...form, customerPhone: e.target.value })}
               className="mt-1 w-full rounded-lg border border-white/10 bg-char-light px-4 py-2.5 text-smoke focus:border-gold focus:outline-none"
               placeholder="e.g. 073 123 4567"
             />
           </div>
-          <div>
-            <label className="text-xs font-semibold uppercase tracking-wide text-smoke/60">
-              Pickup or delivery
-            </label>
-            <div className="mt-1 flex gap-2">
-              {(["Pickup", "Delivery"] as const).map((opt) => (
-                <button
-                  type="button"
-                  key={opt}
-                  onClick={() => setForm({ ...form, deliveryOrPickup: opt })}
-                  className={`flex-1 rounded-lg px-4 py-2.5 text-sm font-semibold transition-colors ${
-                    form.deliveryOrPickup === opt
-                      ? "bg-ember text-smoke"
-                      : "border border-white/10 text-smoke/70"
-                  }`}
-                >
-                  {opt}
-                </button>
-              ))}
-            </div>
-          </div>
-          <div>
-            <label className="text-xs font-semibold uppercase tracking-wide text-smoke/60">
-              Preferred date &amp; time
-            </label>
-            <input
-              value={form.preferredDatetime}
-              onChange={(e) => setForm({ ...form, preferredDatetime: e.target.value })}
-              className="mt-1 w-full rounded-lg border border-white/10 bg-char-light px-4 py-2.5 text-smoke focus:border-gold focus:outline-none"
-              placeholder="e.g. Saturday 10:00"
-            />
-          </div>
+          {hasPhysicalProducts && (
+            <>
+              <div>
+                <label className="text-xs font-semibold uppercase tracking-wide text-smoke/60">
+                  Pickup or delivery
+                </label>
+                <div className="mt-1 flex gap-2">
+                  {(["Pickup", "Delivery"] as const).map((opt) => (
+                    <button
+                      type="button"
+                      key={opt}
+                      onClick={() => setForm({ ...form, deliveryOrPickup: opt })}
+                      className={`flex-1 rounded-lg px-4 py-2.5 text-sm font-semibold transition-colors ${
+                        form.deliveryOrPickup === opt
+                          ? "bg-ember text-smoke"
+                          : "border border-white/10 text-smoke/70"
+                      }`}
+                    >
+                      {opt}
+                    </button>
+                  ))}
+                </div>
+              </div>
+              <div>
+                <label className="text-xs font-semibold uppercase tracking-wide text-smoke/60">
+                  Preferred date &amp; time
+                </label>
+                <input
+                  required
+                  value={form.preferredDatetime}
+                  onChange={(e) => setForm({ ...form, preferredDatetime: e.target.value })}
+                  className="mt-1 w-full rounded-lg border border-white/10 bg-char-light px-4 py-2.5 text-smoke focus:border-gold focus:outline-none"
+                  placeholder="e.g. Saturday 10:00"
+                />
+              </div>
+            </>
+          )}
           <div>
             <label className="text-xs font-semibold uppercase tracking-wide text-smoke/60">
               Notes (optional)
@@ -170,11 +208,11 @@ export default function CheckoutPage() {
               <span>Subtotal</span>
               <span>{formatZAR(totalPrice)}</span>
             </div>
-            {form.deliveryOrPickup === "Delivery" && (
+            {hasPhysicalProducts && form.deliveryOrPickup === "Delivery" && (
               <div className="flex justify-between text-smoke/80">
                 <span className="flex items-center gap-1">
                   Delivery fee
-                  {totalPrice >= FREE_DELIVERY_THRESHOLD && (
+                  {physicalSubtotal >= FREE_DELIVERY_THRESHOLD && (
                     <span className="text-xs text-gold">(FREE)</span>
                   )}
                 </span>

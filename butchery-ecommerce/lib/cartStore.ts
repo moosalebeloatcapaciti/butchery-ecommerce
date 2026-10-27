@@ -2,7 +2,6 @@
 
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
-import type { Product } from "./products";
 
 export type CartItem = {
   id: string;
@@ -11,11 +10,23 @@ export type CartItem = {
   unit: string;
   image: string;
   quantity: number;
+  orderType?: "product" | "service" | "airtime" | "voucher";
 };
+
+export type AddableCartItem = Pick<
+  CartItem,
+  "id" | "name" | "price" | "unit" | "image"
+> & {
+  orderType?: CartItem["orderType"];
+};
+
+export function isPhysicalProduct(item: Pick<CartItem, "orderType">) {
+  return item.orderType === undefined || item.orderType === "product";
+}
 
 type CartState = {
   items: CartItem[];
-  addItem: (product: Product, quantity?: number) => void;
+  addItem: (product: AddableCartItem, quantity?: number) => void;
   removeItem: (id: string) => void;
   updateQuantity: (id: string, quantity: number) => void;
   clearCart: () => void;
@@ -49,6 +60,7 @@ export const useCartStore = create<CartState>()(
                 unit: product.unit,
                 image: product.image,
                 quantity,
+                orderType: product.orderType ?? "product",
               },
             ],
           };

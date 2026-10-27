@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import { Minus, Plus, Trash2 } from "lucide-react";
-import { useCartStore } from "@/lib/cartStore";
+import { isPhysicalProduct, useCartStore } from "@/lib/cartStore";
 import { formatZAR } from "@/lib/business";
 
 const DELIVERY_FEE = 60;
@@ -16,6 +16,12 @@ export default function CartPage() {
   const updateQuantity = useCartStore((s) => s.updateQuantity);
   const removeItem = useCartStore((s) => s.removeItem);
   const totalPrice = useCartStore((s) => s.totalPrice());
+  const physicalSubtotal = items.reduce(
+    (sum, item) =>
+      isPhysicalProduct(item) ? sum + item.price * item.quantity : sum,
+    0
+  );
+  const hasPhysicalProducts = items.some(isPhysicalProduct);
 
   useEffect(() => setMounted(true), []);
 
@@ -26,10 +32,10 @@ export default function CartPage() {
       <div className="section-pad flex flex-col items-center gap-4 py-24 text-center">
         <h1 className="brand-heading text-2xl text-smoke">Your cart is empty</h1>
         <p className="text-sm text-smoke/60">
-          Add some fresh cuts from the menu to get started.
+          Add products, services, airtime or a voucher to get started.
         </p>
-        <Link href="/products" className="btn-ember">
-          Browse the menu
+        <Link href="/" className="btn-ember">
+          Browse the storefront
         </Link>
       </div>
     );
@@ -93,11 +99,13 @@ export default function CartPage() {
         <div>
           <p className="text-sm text-smoke/60">Order total</p>
           <p className="brand-heading text-2xl text-gold">{formatZAR(totalPrice)}</p>
-          <p className="mt-2 text-xs text-smoke/50">
-            {totalPrice < FREE_DELIVERY_THRESHOLD 
-              ? `Delivery fee (R${DELIVERY_FEE}) will be added if you choose delivery at checkout`
-              : "Free delivery available"}
-          </p>
+          {hasPhysicalProducts && (
+            <p className="mt-2 text-xs text-smoke/50">
+              {physicalSubtotal < FREE_DELIVERY_THRESHOLD
+                ? `Delivery fee (R${DELIVERY_FEE}) applies to product orders below R${FREE_DELIVERY_THRESHOLD}`
+                : "Free delivery available on your product order"}
+            </p>
+          )}
         </div>
         <Link href="/checkout" className="btn-ember">
           Proceed to checkout

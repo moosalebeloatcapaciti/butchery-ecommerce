@@ -9,7 +9,10 @@ import { BUSINESS } from "@/lib/business";
 
 const LINKS = [
   { href: "/", label: "Home" },
-  { href: "/products", label: "Shop" },
+  { href: "/products", label: "Products" },
+  { href: "/services", label: "Services" },
+  { href: "/airtime", label: "Airtime" },
+  { href: "/voucher", label: "Voucher" },
   { href: "/about", label: "About" },
 ];
 
@@ -36,12 +39,12 @@ export default function Navbar() {
           <span className="brand-heading text-lg text-smoke">{BUSINESS.name}</span>
         </Link>
 
-        <nav className="hidden items-center gap-8 md:flex">
+        <nav className="hidden items-center gap-3 lg:gap-5 md:flex">
           {LINKS.map((l) => (
             <Link
               key={l.href}
               href={l.href}
-              className="text-sm font-semibold uppercase tracking-wide text-smoke/80 transition-colors hover:text-gold"
+              className="text-xs font-semibold uppercase tracking-wide text-smoke/80 transition-colors hover:text-gold lg:text-sm"
             >
               {l.label}
             </Link>

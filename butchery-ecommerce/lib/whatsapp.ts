@@ -1,11 +1,11 @@
-import type { CartItem } from "./cartStore";
+import { isPhysicalProduct, type CartItem } from "./cartStore";
 import { BUSINESS, formatZAR } from "./business";
 
 export type OrderDetails = {
   customerName: string;
   customerPhone: string;
-  deliveryOrPickup: "Delivery" | "Pickup";
-  preferredDatetime: string;
+  deliveryOrPickup?: "Delivery" | "Pickup";
+  preferredDatetime?: string;
   notes?: string;
 };
 
@@ -24,14 +24,18 @@ export function buildWhatsAppMessage(
   lines.push("");
   lines.push(`[Customer Name]: ${order.customerName}`);
   lines.push(`[Phone Number]: ${order.customerPhone}`);
-  lines.push(`[Delivery / Pickup]: ${order.deliveryOrPickup}`);
-  lines.push(`[Preferred Date & Time]: ${order.preferredDatetime}`);
+  if (order.deliveryOrPickup) {
+    lines.push(`[Delivery / Pickup]: ${order.deliveryOrPickup}`);
+    lines.push(`[Preferred Date & Time]: ${order.preferredDatetime || "-"}`);
+  }
   lines.push("");
   lines.push("🛒 My Order:");
   let total = 0;
+  let physicalSubtotal = 0;
   for (const item of items) {
     const itemTotal = item.price * item.quantity;
     total += itemTotal;
+    if (isPhysicalProduct(item)) physicalSubtotal += itemTotal;
     lines.push(
       `- ${item.name} (${item.quantity} x ${formatZAR(item.price)}/${item.unit}) = ${formatZAR(itemTotal)}`
     );
@@ -39,7 +43,11 @@ export function buildWhatsAppMessage(
   lines.push("");
   lines.push(`Subtotal: ${formatZAR(total)}`);
   
-  const deliveryFee = order.deliveryOrPickup === "Delivery" && total < FREE_DELIVERY_THRESHOLD ? DELIVERY_FEE : 0;
+  const deliveryFee =
+    order.deliveryOrPickup === "Delivery" &&
+    physicalSubtotal < FREE_DELIVERY_THRESHOLD
+      ? DELIVERY_FEE
+      : 0;
   if (order.deliveryOrPickup === "Delivery") {
     if (deliveryFee > 0) {
       lines.push(`Delivery fee: ${formatZAR(deliveryFee)}`);
@@ -48,6 +56,8 @@ export function buildWhatsAppMessage(
       lines.push(`Delivery fee: FREE (Order above R${FREE_DELIVERY_THRESHOLD})`);
       lines.push(`💰 Total: ${formatZAR(total)}`);
     }
+  } else if (order.deliveryOrPickup === "Pickup") {
+    lines.push(`💰 Total: ${formatZAR(total)}`);
   } else {
     lines.push(`💰 Total: ${formatZAR(total)}`);
   }

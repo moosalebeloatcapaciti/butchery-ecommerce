@@ -22,7 +22,10 @@ copy going forward.
 │   └── website-building-skills/
 ├── app/                       ← Next.js App Router pages
 │   ├── page.tsx                 Home
-│   ├── products/page.tsx        Shop / menu with category filters + search
+│   ├── products/page.tsx        Product catalog with category filters + search
+│   ├── services/page.tsx        Electricity and Water payment orders
+│   ├── airtime/page.tsx         Network airtime top-ups
+│   ├── voucher/page.tsx         Voucher orders
 │   ├── product/[slug]/          Product detail pages
 │   ├── cart/page.tsx            Cart
 │   ├── checkout/page.tsx        Checkout → WhatsApp handoff
@@ -31,6 +34,7 @@ copy going forward.
 ├── components/                ← Navbar, Footer, ProductCard, Hero, etc.
 ├── lib/
 │   ├── products.ts              Product catalog (source of truth for the UI)
+│   ├── storefront.ts            Service/provider options and top-up denominations
 │   ├── business.ts              Address, WhatsApp numbers, map coordinates
 │   ├── cartStore.ts             Client-side cart (Zustand, persisted)
 │   ├── whatsapp.ts              Builds the order message from your template
@@ -149,10 +153,15 @@ git push -u origin main
 
 ## How checkout works
 
-1. Customer browses `/products`, adds items to their cart (stored in the
-   browser via `localStorage`, so it survives refreshes).
-2. At `/checkout`, they enter their name, phone, pickup/delivery choice,
-   preferred time and any notes.
+1. Customers can browse Products, choose Electricity or Water and enter a
+   payment amount, or select an Airtime/Voucher provider and a fixed amount.
+   The Airtime and Voucher denominations are R5, R10, R11, R12, R20, followed
+   by R25 and higher in R5 steps (up to R500); a R1 service charge applies
+   to R5 and to amounts from R25 upward.
+2. Items from all four categories use the same persistent cart and `/checkout`
+   WhatsApp order flow. Customers enter their name, phone and any notes.
+   Pickup/delivery and preferred time are requested only when the cart
+   contains physical products.
 3. On submit, the order is:
    - logged to Supabase `orders` (if configured), and
    - formatted into a WhatsApp message matching your original template,
