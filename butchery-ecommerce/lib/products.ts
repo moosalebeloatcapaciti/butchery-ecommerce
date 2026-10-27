@@ -14,6 +14,7 @@ export type Product = {
   featured?: boolean;
 };
 
+
 // Pricing is based on the supplied 2026 ZAR price guide where a direct
 // match exists (beef). Pork, processed and spice items are not covered by
 // that guide, so reasonable mid-market ZAR prices have been estimated —
